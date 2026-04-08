@@ -1,754 +1,1038 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>KeratinCycle — Rugs made from recovered human hair</title>
-    <meta name="description" content="KeratinCycle transforms recovered human hair into design-forward rugs through circular collection, treatment, and material research."/>
+    <meta name="description"
+        content="KeratinCycle transforms recovered human hair into design-forward rugs through circular collection, treatment, and material research." />
     <style>
-        :root{
-            --bg:#FFFDF8;
-            --bg-soft:#F7F2E8;
-            --card:#F3E9DA;
-            --text:#3E2C23;
-            --muted:#7B6657;
-            --accent:#6B4F3A;
-            --accent-soft:#D8C3A5;
-            --line:rgba(62,44,35,.12);
-            --shadow:0 12px 28px rgba(62,44,35,.08);
-            --radius:20px;
-            --max:1180px;
+        :root {
+            --bg: #FFFDF8;
+            --bg-soft: #F7F2E8;
+            --card: #F3E9DA;
+            --text: #3E2C23;
+            --muted: #7B6657;
+            --accent: #6B4F3A;
+            --accent-soft: #D8C3A5;
+            --line: rgba(62, 44, 35, .12);
+            --shadow: 0 12px 28px rgba(62, 44, 35, .08);
+            --radius: 20px;
+            --max: 1180px;
         }
 
-        *{box-sizing:border-box}
-        html{scroll-behavior:smooth}
-        body{
-            margin:0;
-            font-family:"Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
             background:
-                    radial-gradient(circle at top left, rgba(216,195,165,.30), transparent 30%),
-                    radial-gradient(circle at bottom right, rgba(107,79,58,.08), transparent 28%),
-                    var(--bg);
-            color:var(--text);
-            line-height:1.5;
+                radial-gradient(circle at top left, rgba(216, 195, 165, .30), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(107, 79, 58, .08), transparent 28%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.5;
         }
 
-        a{color:inherit;text-decoration:none}
-        img{display:block;max-width:100%}
-
-        .wrap{max-width:var(--max);margin:0 auto;padding:24px}
-
-        .nav{
-            position:sticky;
-            top:0;
-            z-index:20;
-            backdrop-filter:blur(10px);
-            background:rgba(255,253,248,.88);
-            border-bottom:1px solid var(--line);
+        a {
+            color: inherit;
+            text-decoration: none
         }
 
-        .nav .wrap{
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            gap:20px;
+        img {
+            display: block;
+            max-width: 100%
         }
 
-        .brand{
-            display:flex;
-            align-items:center;
-            gap:12px;
-            font-weight:800;
-            letter-spacing:.2px;
+        .wrap {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: 24px
         }
 
-        .logo{
-            width:36px;
-            height:36px;
-            border-radius:12px;
-            background:linear-gradient(135deg, #6B4F3A, #D8C3A5);
-            box-shadow:var(--shadow);
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 253, 248, .88);
+            border-bottom: 1px solid var(--line);
         }
 
-        .links{
-            display:flex;
-            gap:14px;
-            flex-wrap:wrap;
-            color:var(--muted);
-            font-size:14px;
+        .nav .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
         }
 
-        .links a{
-            padding:10px 12px;
-            border-radius:12px;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            letter-spacing: .2px;
         }
 
-        .links a:hover{
-            background:var(--bg-soft);
-            color:var(--text);
+        .logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #6B4F3A, #D8C3A5);
+            box-shadow: var(--shadow);
         }
 
-        .ctaRow{
-            display:flex;
-            gap:12px;
-            align-items:center;
-            flex-wrap:wrap;
+        .links {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            color: var(--muted);
+            font-size: 14px;
         }
 
-        .btn{
-            display:inline-flex;
-            align-items:center;
-            justify-content:center;
-            padding:12px 16px;
-            border-radius:14px;
-            border:1px solid var(--line);
-            background:white;
-            color:var(--text);
-            font-weight:700;
-            font-size:14px;
-            transition:.15s ease;
-            cursor:pointer;
+        .links a {
+            padding: 10px 12px;
+            border-radius: 12px;
         }
 
-        .btn:hover{
-            transform:translateY(-1px);
-            box-shadow:var(--shadow);
+        .links a:hover {
+            background: var(--bg-soft);
+            color: var(--text);
         }
 
-        .btn.primary{
-            background:var(--accent);
-            color:#fff;
-            border-color:var(--accent);
+        .ctaRow {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
-        .hero{
-            padding:70px 0 28px;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 16px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: white;
+            color: var(--text);
+            font-weight: 700;
+            font-size: 14px;
+            transition: .15s ease;
+            cursor: pointer;
         }
 
-        .heroGrid{
-            display:grid;
-            grid-template-columns:1.05fr .95fr;
-            gap:24px;
-            align-items:stretch;
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow);
         }
 
-        .card{
-            background:rgba(243,233,218,.72);
-            border:1px solid var(--line);
-            border-radius:var(--radius);
-            box-shadow:var(--shadow);
-            overflow:hidden;
+        .btn.primary {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
         }
 
-        .heroCard{padding:34px}
-        .sideCard{padding:24px}
-        .mini{padding:20px}
-
-        
-        h1{
-            margin:0 0 14px;
-            font-size:clamp(34px, 5vw, 58px);
-            line-height:1.02;
-            letter-spacing:-.8px;
+        .hero {
+            padding: 70px 0 28px;
         }
 
-        h2{
-            margin:0;
-            font-size:28px;
-            letter-spacing:-.3px;
+        .heroGrid {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 24px;
+            align-items: stretch;
         }
 
-        h3{
-            margin:4px 0 8px;
-            font-size:18px;
+        .card {
+            background: rgba(243, 233, 218, .72);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
         }
 
-        .sub{
-            margin:0 0 18px;
-            max-width:60ch;
-            color:var(--muted);
-            font-size:18px;
+        .heroCard {
+            padding: 34px
         }
 
-        .lead{
-            margin:0;
-            color:var(--muted);
-            max-width:72ch;
+        .sideCard {
+            padding: 24px
         }
 
-        .tag{
-            display:inline-flex;
-            align-items:center;
-            gap:8px;
-            padding:7px 12px;
-            border-radius:999px;
-            background:#fff;
-            border:1px solid var(--line);
-            font-size:12px;
-            font-weight:800;
-            color:var(--accent);
-            margin-bottom:12px;
+        .mini {
+            padding: 20px
         }
 
-        .pillRow{
-            display:flex;
-            gap:10px;
-            flex-wrap:wrap;
-            margin-top:18px;
+        h1 {
+            margin: 0 0 14px;
+            font-size: clamp(34px, 5vw, 58px);
+            line-height: 1.02;
+            letter-spacing: -.8px;
         }
 
-        .pill{
-            padding:8px 12px;
-            border-radius:999px;
-            background:var(--bg-soft);
-            border:1px solid var(--line);
-            color:var(--muted);
-            font-size:13px;
-            font-weight:600;
+        h2 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: -.3px;
         }
 
-        .metric{
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:12px;
-            margin-top:16px;
+        h3 {
+            margin: 4px 0 8px;
+            font-size: 18px;
         }
 
-        .m{
-            padding:14px;
-            background:#fff;
-            border:1px solid var(--line);
-            border-radius:16px;
+        .sub {
+            margin: 0 0 18px;
+            max-width: 60ch;
+            color: var(--muted);
+            font-size: 18px;
         }
 
-        .m .k{
-            font-size:12px;
-            color:var(--muted);
+        .lead {
+            margin: 0;
+            color: var(--muted);
+            max-width: 72ch;
         }
 
-        .m .v{
-            font-size:17px;
-            font-weight:800;
-            margin-top:4px;
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: #fff;
+            border: 1px solid var(--line);
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 12px;
         }
 
-        section{padding:30px 0}
-
-        .sectionTitle{
-            display:flex;
-            align-items:flex-end;
-            justify-content:space-between;
-            gap:18px;
-            margin-bottom:16px;
+        .pillRow {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px;
         }
 
-        .cards{
-            display:grid;
-            grid-template-columns:repeat(12, 1fr);
-            gap:16px;
+        .pill {
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: var(--bg-soft);
+            border: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 600;
         }
 
-        .col4{grid-column:span 4}
-        .col6{grid-column:span 6}
-        .col12{grid-column:span 12}
-
-        .list{
-            margin:10px 0 0;
-            padding-left:18px;
-            color:var(--muted);
-            font-size:14px;
+        .metric {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
         }
 
-        .divider{
-            height:1px;
-            background:var(--line);
-            margin:18px 0;
+        .m {
+            padding: 14px;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 16px;
         }
 
-        .twoCol{
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:18px;
-            align-items:center;
+        .m .k {
+            font-size: 12px;
+            color: var(--muted);
         }
 
-        .faq details{
-            border:1px solid var(--line);
-            border-radius:16px;
-            background:rgba(255,255,255,.72);
-            padding:14px 16px;
+        .m .v {
+            font-size: 17px;
+            font-weight: 800;
+            margin-top: 4px;
         }
 
-        .faq details + details{margin-top:10px}
-        summary{cursor:pointer;font-weight:800}
-
-        input, textarea{
-            width:100%;
-            padding:12px 14px;
-            border-radius:14px;
-            border:1px solid var(--line);
-            background:white;
-            color:var(--text);
-            font-size:14px;
-            outline:none;
+        section {
+            padding: 30px 0
         }
 
-        textarea{
-            min-height:120px;
-            resize:vertical;
+        .sectionTitle {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 18px;
+            margin-bottom: 16px;
         }
 
-        .formGrid{
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:12px;
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
         }
 
-        .note{
-            font-size:12px;
-            color:var(--muted);
-            margin-top:10px;
+        .col4 {
+            grid-column: span 4
         }
 
-        .footer{
-            padding:42px 0 60px;
-            color:var(--muted);
-            font-size:13px;
+        .col6 {
+            grid-column: span 6
+        }
+
+        .col12 {
+            grid-column: span 12
+        }
+
+        .list {
+            margin: 10px 0 0;
+            padding-left: 18px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--line);
+            margin: 18px 0;
+        }
+
+        .twoCol {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .faq details {
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, .72);
+            padding: 14px 16px;
+        }
+
+        .faq details+details {
+            margin-top: 10px
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 800
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: white;
+            color: var(--text);
+            font-size: 14px;
+            outline: none;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .formGrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .note {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 10px;
+        }
+
+        .footer {
+            padding: 42px 0 60px;
+            color: var(--muted);
+            font-size: 13px;
         }
 
         /* IMAGE SYSTEM */
 
-        .heroVisual{
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            background:#f2eee8;
+        .heroVisual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f2eee8;
         }
 
-        .img-cover{
-            width:100%;
-            height:100%;
-            object-fit:cover;
-            object-position:center;
+        .img-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
-        .heroVisual .img-cover{
-            height:520px;
+        .heroVisual .img-cover {
+            height: 520px;
         }
 
-        .img-product{
-            width:100%;
-            height:320px;
-            object-fit:contain;
-            object-position:center;
-            padding:20px;
-            background:#f6f3ee;
-            border-bottom:1px solid var(--line);
+        .img-product {
+            width: 100%;
+            height: 320px;
+            object-fit: contain;
+            object-position: center;
+            padding: 20px;
+            background: #f6f3ee;
+            border-bottom: 1px solid var(--line);
         }
 
-        .img-material{
-            width:100%;
-            max-height:520px;
-            object-fit:contain;
-            object-position:center;
-            padding:24px;
-            background:#f6f3ee;
-            border-radius:18px;
+        .img-material {
+            width: 100%;
+            max-height: 520px;
+            object-fit: contain;
+            object-position: center;
+            padding: 24px;
+            background: #f6f3ee;
+            border-radius: 18px;
         }
 
-        .img-rug-card{
-            width:100%;
-            height:320px;
-            object-fit:cover;
-            object-position:center;
-            border-bottom:1px solid var(--line);
+        .img-rug-card {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            object-position: center;
+            border-bottom: 1px solid var(--line);
         }
 
-        .teamCard img{
-            width:100%;
-            height:260px;
-            object-fit:cover;
-            object-position:center;
-            border-bottom:1px solid var(--line);
+        .teamCard img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            object-position: center;
+            border-bottom: 1px solid var(--line);
         }
 
-        .processImage{
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            padding:12px;
-            background:rgba(255,255,255,.4);
-            border:1px solid var(--line);
-            border-radius:18px;
-            box-shadow:var(--shadow);
+        .processImage {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            background: rgba(255, 255, 255, .4);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
         }
 
-        .imageCard img{
-            transition:transform .35s ease;
+        .imageCard img {
+            transition: transform .35s ease;
         }
 
-        .imageCard:hover img{
-            transform:scale(1.02);
+        .imageCard:hover img {
+            transform: scale(1.02);
         }
 
-        @media (max-width: 950px){
+        @media (max-width: 950px) {
+
             .heroGrid,
             .twoCol,
-            .formGrid{
-                grid-template-columns:1fr;
+            .formGrid {
+                grid-template-columns: 1fr;
             }
 
-            .col4,.col6{
-                grid-column:span 12;
+            .col4,
+            .col6 {
+                grid-column: span 12;
             }
 
-            .links{
-                display:none;
+            .links {
+                display: none;
             }
 
-            .hero{
-                padding-top:34px;
+            .hero {
+                padding-top: 34px;
             }
 
-            .heroVisual .img-cover{
-                height:320px;
+            .heroVisual .img-cover {
+                height: 320px;
             }
 
             .img-product,
-            .img-rug-card{
-                height:260px;
+            .img-rug-card {
+                height: 260px;
             }
 
-            .img-material{
-                max-height:420px;
+            .img-material {
+                max-height: 420px;
             }
         }
     </style>
 </head>
+
 <body>
-<header class="nav">
-    <div class="wrap">
-        <a class="brand" href="#top">
-            <span class="logo"></span>
-            <span>KeratinCycle</span>
-        </a>
+    <header class="nav">
+        <div class="wrap">
+            <a class="brand" href="#top">
+                <span class="logo"></span>
+                <span>KeratinCycle</span>
+            </a>
 
-        <nav class="links">
-            <a href="#why">Why it matters</a>
-            <a href="#process">Process</a>
-            <a href="#products">Products</a>
-            <a href="#team">Research Team</a>
-            <a href="#care">Care</a>
-            <a href="#contact">Contact</a>
-        </nav>
-
-        <div class="ctaRow">
-            <a class="btn" href="#team">Meet the team</a>
-            <a class="btn primary" href="#contact">Pre-order</a>
-        </div>
-    </div>
-</header>
-
-<main id="top" class="wrap">
-    <section class="hero">
-        <div class="heroGrid">
-            <div class="card heroCard">
-                <div class="tag">Recovered human hairs • Circular design • Research-led</div>
-                <h1>Transforming recovered human hairs into rugs with character.</h1>
-                <p class="sub">
-                    KeratinCycle explores how discarded human hairs can become a new design material through collection,
-                    treatment, and circular product research.
-                </p>
-
-                <div class="ctaRow">
-                    <a class="btn primary" href="#contact">Shop / Pre-order</a>
-                    <a class="btn" href="#process">Discover the process</a>
-                </div>
-
-                <div class="pillRow">
-                    <span class="pill">Recovered human hairs</span>
-                    <span class="pill">Natural keratin fiber</span>
-                    <span class="pill">Plastic-conscious alternative</span>
-                    <span class="pill">Made with a traceable story</span>
-                </div>
-
-                <div class="divider"></div>
-
-                <p class="lead">
-                    What is usually swept away becomes a long-life interior object. That contrast is exactly what makes the project memorable.
-                </p>
-            </div>
-
-            <div class="card heroVisual">
-                <img class="img-cover" src="images/task_01kjz3jshmes3t3w0k2krtt5ts2F1772717977_img_1.png" alt="Premium rug made from recovered human hairs in a warm interior">
-            </div>
-        </div>
-    </section>
-
-    <section id="why">
-        <div class="sectionTitle">
-            <h2>Why it matters</h2>
-            <p class="lead">An overlooked waste stream can become a visible, tactile design object.</p>
-        </div>
-
-        <div class="cards">
-            <div class="card mini col4">
-                <div class="tag">Circular logic</div>
-                <h3>From waste to object</h3>
-                <p>Human hairs are continuously produced and continuously discarded. We reframe that flow as a material resource.</p>
-            </div>
-
-            <div class="card mini col4">
-                <div class="tag">Material angle</div>
-                <h3>Natural keratin fiber</h3>
-                <p>The project explores the structural and tactile qualities of recovered human hairs as a material basis.</p>
-            </div>
-
-            <div class="card mini col4">
-                <div class="tag">Design value</div>
-                <h3>Unexpected but memorable</h3>
-                <p>The project creates a strong reaction first, then turns it into curiosity, conversation, and desirability.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="process">
-        <div class="sectionTitle">
-            <h2>Process</h2>
-            <p class="lead">Collection, preparation, and transformation into a research-driven product.</p>
-        </div>
-
-        <div class="twoCol">
-            <div>
-                <div class="cards">
-                    <div class="card mini col12">
-                        <div class="tag">01</div>
-                        <h3>Collect</h3>
-                        <p>Recovered hairs are gathered through dedicated collection points inspired by everyday recycling systems.</p>
-                    </div>
-
-                    <div class="card mini col12">
-                        <div class="tag">02</div>
-                        <h3>Prepare</h3>
-                        <p>The material is sorted and prepared to support consistency, cleanliness, and further transformation.</p>
-                    </div>
-
-                    <div class="card mini col12">
-                        <div class="tag">03</div>
-                        <h3>Craft</h3>
-                        <p>The fibers are integrated into rugs and mats with a distinctive visual and tactile identity.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="processImage">
-                <img class="img-material" src="images/content3.png" alt="Collected human hairs prepared for transformation into rugs">
-            </div>
-        </div>
-    </section>
-
-    <section id="products">
-        <div class="sectionTitle">
-            <h2>Products</h2>
-            <p class="lead">Experimental rugs designed to bring circular materials into interior spaces.</p>
-        </div>
-
-        <div class="cards">
-            <div class="card imageCard col6">
-                <img class="img-rug-card" src="images/img.png" alt="Signature interior rug made from recovered human hairs">
-                <div class="mini">
-                    <div class="tag">Signature pieces</div>
-                    <h3>Interior rugs</h3>
-                    <p>Warm, textured, and conversation-starting pieces for homes, studios, and curated spaces.</p>
-                </div>
-            </div>
-
-            <div class="card imageCard col6">
-                <img class="img-rug-card" src="images/img_1.png" alt="Custom rug edition made from recovered human hairs">
-                <div class="mini">
-                    <div class="tag">Custom format</div>
-                    <h3>Research & design editions</h3>
-                    <p>Custom dimensions and special editions for exhibitions, installations, and experimental interior projects.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="team">
-        <div class="sectionTitle">
-            <h2>Research Team</h2>
-            <p class="lead">Three founders exploring how recovered human hairs can become a circular material.</p>
-        </div>
-
-        <div class="cards">
-            <div class="card teamCard col4">
-                <img src="images/anais.png" alt="Portrait of the first co-founder">
-                <div class="mini">
-                    <div class="tag">Co-founder</div>
-                    <h3>Anaïs Lacouture</h3>
-                    <p><strong>Material Research · Circular Systems</strong></p>
-                    <p>Focused on collection concepts, recovery networks, and the transformation of discarded human hairs into useful design materials.</p>
-                </div>
-            </div>
-
-            <div class="card teamCard col4">
-                <img src="images/olivier.png" alt="Portrait of the second co-founder">
-                <div class="mini">
-                    <div class="tag">Co-founder</div>
-                    <h3>Olivier Boulet</h3>
-                    <p><strong>Process Development · Fiber Treatment</strong></p>
-                    <p>Works on preparation methods, treatment protocols, and the integration of recovered hairs into durable rug structures.</p>
-                </div>
-            </div>
-
-            <div class="card teamCard col4">
-                <img src="images/sab.png" alt="Portrait of the third co-founder">
-                <div class="mini">
-                    <div class="tag">Co-founder</div>
-                    <h3>Sabrina Lamghari</h3>
-                    <p><strong>Brand Strategy · Product Experience</strong></p>
-                    <p>Shapes the visual identity, public perception, and storytelling behind a material that challenges expectations.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="story">
-        <div class="sectionTitle">
-            <h2>Material Storytelling</h2>
-            <p class="lead">A strong image helps people remember what makes the project unusual.</p>
-        </div>
-
-        <div class="cards">
-            <div class="card imageCard col6">
-                <img class="img-rug-card" src="images/donation.png" alt="A man with a lot of hairs used as a provocative storytelling visual">
-                <div class="mini">
-                    <div class="tag">Provocative visual</div>
-                    <h3>Challenge perception</h3>
-                    <p>Use a bold image to trigger curiosity, then explain the logic, treatment, and design value behind the project.</p>
-                </div>
-            </div>
-
-            <div class="card imageCard col6">
-                <img class="img-rug-card" src="images/lab.png" alt="Research and material exploration around recovered human hairs">
-                <div class="mini">
-                    <div class="tag">Research angle</div>
-                    <h3>Show the process behind the concept</h3>
-                    <p>Images of testing, samples, and material exploration make the project feel intentional and credible.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="care">
-        <div class="sectionTitle">
-            <h2>Care Guide</h2>
-            <p class="lead">Simple maintenance for a material with an unusual story.</p>
-        </div>
-
-        <div class="cards">
-            <div class="card imageCard col6">
-                <img class="img-product" src="images/content.png" alt="Mild shampoo used to clean a rug made from recovered human hairs">
-                <div class="mini">
-                    <div class="tag">Cleaning</div>
-                    <h3>Shampoo method</h3>
-                    <ul class="list">
-                        <li>Use lukewarm water with a small amount of mild shampoo.</li>
-                        <li>Apply lightly with a soft sponge.</li>
-                        <li>Wipe with a damp cloth and air-dry flat.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="card imageCard col6">
-                <img class="img-product" src="images/content1.png" alt="Soft brush used to maintain a rug made from recovered human hairs">
-                <div class="mini">
-                    <div class="tag">Weekly care</div>
-                    <h3>Gentle brushing & vacuuming</h3>
-                    <ul class="list">
-                        <li>Vacuum gently on low or medium suction.</li>
-                        <li>Avoid aggressive rotating brushes.</li>
-                        <li>Handle the surface with soft, regular care.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="faq">
-        <div class="sectionTitle">
-            <h2>FAQ</h2>
-            <p class="lead">The project is surprising, so the questions are part of the experience.</p>
-        </div>
-
-        <details>
-            <summary>Why use human hairs as a material?</summary>
-            <p style="color:var(--muted);margin:10px 0 0;">
-                Because they are already produced in large quantities and usually discarded immediately. The project rethinks that material flow.
-            </p>
-        </details>
-
-        <details>
-            <summary>Is this a design project or a research project?</summary>
-            <p style="color:var(--muted);margin:10px 0 0;">
-                Both. It sits between circular material research, product experimentation, and storytelling through design.
-            </p>
-        </details>
-
-        <details>
-            <summary>How do you clean the rugs?</summary>
-            <p style="color:var(--muted);margin:10px 0 0;">
-                With gentle vacuuming and a mild shampoo cleaning method using lukewarm water and soft handling.
-            </p>
-        </details>
-    </section>
-
-    <section id="contact">
-        <div class="sectionTitle">
-            <h2>Contact</h2>
-            <p class="lead">For pre-orders, exhibitions, collaborations, or media interest.</p>
-        </div>
-
-        <div class="card mini">
-            <form onsubmit="event.preventDefault(); alert('Demo form — connect this to Formspree, Netlify Forms, or your own backend.');">
-                <div class="formGrid">
-                    <div>
-                        <label for="name" style="font-size:12px;color:var(--muted);">Name</label>
-                        <input id="name" name="name" placeholder="Your name" required />
-                    </div>
-                    <div>
-                        <label for="email" style="font-size:12px;color:var(--muted);">Email</label>
-                        <input id="email" name="email" type="email" placeholder="you@email.com" required />
-                    </div>
-                </div>
-
-                <div style="margin-top:12px;">
-                    <label for="msg" style="font-size:12px;color:var(--muted);">Message</label>
-                    <textarea id="msg" name="msg" placeholder="Tell us what you are interested in."></textarea>
-                </div>
-
-                <div class="ctaRow" style="margin-top:14px;">
-                    <button class="btn primary" type="submit">Send message</button>
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="divider"></div>
-        <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-            <div>© <span id="y"></span> KeratinCycle — Circular design from recovered human hairs.</div>
-            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <nav class="links">
+                <a href="#why">Why it matters</a>
+                <a href="#origin">Our story</a>
                 <a href="#team">Research Team</a>
-                <a href="#care">Care Guide</a>
-                <a href="#top">Back to top</a>
+                <a href="#science">The science</a>
+                <a href="#products">Products</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <div class="ctaRow">
+                <a class="btn" href="#team">Meet the team</a>
+                <a class="btn primary" href="#contact">Pre-order</a>
             </div>
         </div>
-    </footer>
-</main>
+    </header>
 
-<script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-</script>
+    <main id="top" class="wrap">
+        <section class="hero">
+            <div class="heroGrid">
+                <div class="card heroCard">
+                    <div class="tag">Recovered human hairs • Circular design • Research-led</div>
+                    <h1>Transforming recovered human hairs into rugs with character.</h1>
+                    <p class="sub">
+                        KeratinCycle explores how discarded human hairs can become a new design material through
+                        collection,
+                        treatment, and circular product research.
+                    </p>
+
+                    <div class="ctaRow">
+                        <a class="btn primary" href="#contact">Shop / Pre-order</a>
+                        <a class="btn" href="#process">Discover the process</a>
+                    </div>
+
+                    <div class="pillRow">
+                        <span class="pill">Recovered human hairs</span>
+                        <span class="pill">Natural keratin fiber</span>
+                        <span class="pill">Plastic-conscious alternative</span>
+                        <span class="pill">Made with a traceable story</span>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <p class="lead">
+                        What is usually swept away becomes a long-life interior object. That contrast is exactly what
+                        makes the project memorable.
+                    </p>
+                </div>
+
+                <div class="card heroVisual">
+                    <img class="img-cover" src="images/task_01kjz3jshmes3t3w0k2krtt5ts2F1772717977_img_1.png"
+                        alt="Premium rug made from recovered human hairs in a warm interior">
+                </div>
+            </div>
+        </section>
+
+        <section id="why">
+            <div class="sectionTitle">
+                <h2>Why it matters</h2>
+                <p class="lead">An overlooked waste stream can become a visible, tactile design object.</p>
+            </div>
+
+            <div class="cards">
+                <div class="card mini col4">
+                    <div class="tag">Circular logic</div>
+                    <h3>From waste to object</h3>
+                    <p>Human hairs are continuously produced and continuously discarded. We reframe that flow as a
+                        material resource.</p>
+                </div>
+
+                <div class="card mini col4">
+                    <div class="tag">Material angle</div>
+                    <h3>Natural keratin fiber</h3>
+                    <p>The project explores the structural and tactile qualities of recovered human hairs as a material
+                        basis.</p>
+                </div>
+
+                <div class="card mini col4">
+                    <div class="tag">Design value</div>
+                    <h3>Unexpected but memorable</h3>
+                    <p>The project creates a strong reaction first, then turns it into curiosity, conversation, and
+                        desirability.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="origin">
+            <div class="sectionTitle">
+                <h2>Our story</h2>
+                <p class="lead">Every project has a moment of "wait — that actually makes sense."</p>
+            </div>
+
+            <div class="cards">
+                <div class="card mini col12" style="padding:34px;">
+                    <div class="tag">Origin</div>
+                    <p style="font-size:20px;line-height:1.55;margin:0 0 18px;font-style:italic;color:var(--muted);">
+                        "Every single day, thousands of hair salons across the world sweep hair off the floor and throw
+                        it in the trash. That's tons — literally tons — of a natural, durable, protein-rich fiber… just
+                        wasted. What if we told you we found a way to turn that waste into something you'd actually
+                        <em>want</em> in your living room?"
+                    </p>
+                    <div class="divider"></div>
+                    <p style="color:var(--muted);margin:18px 0 0;">
+                        It started as a joke. One of us was at the hairdresser, looked at the pile of hair on the floor,
+                        and said: "That honestly looks like a rug." We laughed. Then we stopped laughing. Because it
+                        actually made sense. Hair is made of keratin — the same protein as wool, as animal fur. It's
+                        strong, it's flexible, it's naturally produced. And nobody was doing anything with it. So we
+                        asked ourselves: why not us?
+                    </p>
+                </div>
+            </div>
+
+            <div class="cards" style="margin-top:16px;">
+                <div class="card mini col4">
+                    <div class="tag">The insight</div>
+                    <h3>We don't create waste. We start from waste.</h3>
+                    <p>The circular economy angle is the core of everything. Hair salons already separate their waste —
+                        we simply give them a new bin and a new purpose.</p>
+                </div>
+
+                <div class="card mini col4">
+                    <div class="tag">The material</div>
+                    <h3>Luxury with a conscience.</h3>
+                    <p>It's not just sustainable — it's a conversation piece. Imagine a guest asking "where did you get
+                        this rug?" and you answer: "It's made from recovered human hair." That reaction is our brand.
+                    </p>
+                </div>
+
+                <div class="card mini col4">
+                    <div class="tag">The tagline</div>
+                    <h3>"What is usually swept away becomes a long-life interior object."</h3>
+                    <p>Every rug has a story. It comes from real people, real communities, real salons. That contrast is
+                        exactly what makes the project memorable.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="process">
+            <div class="sectionTitle">
+                <h2>Process</h2>
+                <p class="lead">Collection, preparation, and transformation into a research-driven product.</p>
+            </div>
+
+            <div class="twoCol">
+                <div>
+                    <div class="cards">
+                        <div class="card mini col12">
+                            <div class="tag">01</div>
+                            <h3>Collect</h3>
+                            <p>We set up dedicated collection points in partner hair salons — think recycling bins, but
+                                for hair. Salons already separate their waste; we give them a new bin and a purpose.
+                                Each collection point serves as a local supply node in our growing network.</p>
+                        </div>
+
+                        <div class="card mini col12">
+                            <div class="tag">02</div>
+                            <h3>Prepare</h3>
+                            <p>The collected hair goes through sorting, cleaning, and treatment. We remove impurities,
+                                standardize the fiber length, and ensure consistency — the same logic as processing raw
+                                wool, just a different source. Our protocols were developed to sanitize and improve the
+                                binding capacity of the fiber.</p>
+                        </div>
+
+                        <div class="card mini col12">
+                            <div class="tag">03</div>
+                            <h3>Craft</h3>
+                            <p>The treated fibers are woven or felted into rugs and mats. Each piece has a unique
+                                texture and color profile depending on the hair blend — no two rugs are the same. The
+                                result is durable, soft, and washable with mild shampoo and lukewarm water.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="processImage">
+                    <img class="img-material" src="images/content3.png"
+                        alt="Collected human hairs prepared for transformation into rugs">
+                </div>
+            </div>
+        </section>
+
+
+        <section id="team">
+            <div class="sectionTitle">
+                <h2>Research Team</h2>
+                <p class="lead">Three founders exploring how recovered human hairs can become a circular material.</p>
+            </div>
+
+            <div class="cards">
+                <div class="card teamCard col4">
+                    <img src="images/anais.png" alt="Portrait of the first co-founder">
+                    <div class="mini">
+                        <div class="tag">Co-founder</div>
+                        <h3>Anaïs Lacouture</h3>
+                        <p><strong>Material Research · Circular Systems</strong></p>
+                        <p>Anaïs designed our collection network. She mapped out how to build partnerships with salons
+                            and created the logistics behind our supply chain — turning a scattered waste stream into a
+                            reliable, scalable source of raw material.</p>
+                    </div>
+                </div>
+
+                <div class="card teamCard col4">
+                    <img src="images/olivier.png" alt="Portrait of the second co-founder">
+                    <div class="mini">
+                        <div class="tag">Co-founder</div>
+                        <h3>Olivier Boulet</h3>
+                        <p><strong>Process Development · Fiber Treatment</strong></p>
+                        <p>Olivier is our lab lead. He developed the treatment protocols — how to clean, prepare, and
+                            transform raw hair into a workable fiber. He explored felting techniques and fiber-bonding
+                            methods to create surfaces that are durable, soft, and consistent.</p>
+                    </div>
+                </div>
+
+                <div class="card teamCard col4">
+                    <img src="images/sab.png" alt="Portrait of the third co-founder">
+                    <div class="mini">
+                        <div class="tag">Co-founder</div>
+                        <h3>Sabrina Lamghari</h3>
+                        <p><strong>Brand Strategy · Product Experience</strong></p>
+                        <p>Sabrina is the reason this project doesn't feel weird — it feels <em>cool</em>. She built the
+                            brand, the storytelling, and the visual identity that transforms a provocative concept into
+                            something desirable and conversation-worthy.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="science">
+            <div class="sectionTitle">
+                <h2>The science</h2>
+                <p class="lead">Hair is not just waste. It's a high-performance natural fiber.</p>
+            </div>
+
+            <div class="cards">
+                <div class="card mini col12" style="padding:28px 34px;">
+                    <div class="tag">Keratin fiber</div>
+                    <p style="font-size:17px;line-height:1.6;margin:0;color:var(--muted);">
+                        Hair is composed of <strong style="color:var(--text);">keratin</strong>, a fibrous structural
+                        protein — the same material found in wool and animal fur. It's incredibly resistant: it doesn't
+                        decompose easily, it's waterproof, and it has natural insulating properties. In our lab, we
+                        developed a treatment process that sanitizes the fibers, improves their binding capacity, and
+                        makes them suitable for textile integration.
+                    </p>
+                </div>
+            </div>
+
+            <div class="cards" style="margin-top:16px;">
+                <div class="card mini col4">
+                    <div class="tag">Durability</div>
+                    <h3>Naturally resistant</h3>
+                    <p>Keratin fibers resist decomposition and mechanical stress, making them a structurally sound base
+                        for durable interior textiles.</p>
+                </div>
+
+                <div class="card mini col4">
+                    <div class="tag">Properties</div>
+                    <h3>Waterproof & insulating</h3>
+                    <p>The natural hydrophobic coating of human hair gives our rugs inherent water resistance and
+                        thermal insulation — no synthetic treatments needed.</p>
+                </div>
+
+                <div class="card mini col4">
+                    <div class="tag">Technique</div>
+                    <h3>Felting & fiber-bonding</h3>
+                    <p>We explored felting and fiber-bonding methods to create surfaces that are durable, soft, and
+                        consistent — validated through repeated laboratory testing.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="products">
+            <div class="sectionTitle">
+                <h2>Products</h2>
+                <p class="lead">Experimental rugs designed to bring circular materials into interior spaces.</p>
+            </div>
+
+            <div class="cards">
+                <div class="card imageCard col6">
+                    <img class="img-rug-card" src="images/img.png"
+                        alt="Signature interior rug made from recovered human hairs">
+                    <div class="mini">
+                        <div class="tag">Signature pieces</div>
+                        <h3>Interior rugs</h3>
+                        <p>Warm, textured, and conversation-starting pieces for homes, studios, and curated spaces.</p>
+                    </div>
+                </div>
+
+                <div class="card imageCard col6">
+                    <img class="img-rug-card" src="images/img_1.png"
+                        alt="Custom rug edition made from recovered human hairs">
+                    <div class="mini">
+                        <div class="tag">Custom format</div>
+                        <h3>Research & design editions</h3>
+                        <p>Custom dimensions and special editions for exhibitions, installations, and experimental
+                            interior projects.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="market">
+            <div class="sectionTitle">
+                <h2>Market &amp; Vision</h2>
+                <p class="lead">A unique position at the intersection of circular economy, design, and provocation.</p>
+            </div>
+
+            <div class="cards">
+                <div class="card mini col4">
+                    <div class="m" style="background:var(--bg-soft);border:none;padding:0;margin-bottom:12px;">
+                        <div class="k">Global rug &amp; carpet market</div>
+                        <div class="v" style="font-size:26px;">$80B+</div>
+                    </div>
+                    <p style="color:var(--muted);font-size:14px;margin:0;">A massive addressable market with a growing
+                        sustainable design segment — and zero direct competitors doing what we do.</p>
+                </div>
+
+                <div class="card mini col4">
+                    <div class="m" style="background:var(--bg-soft);border:none;padding:0;margin-bottom:12px;">
+                        <div class="k">Sustainable home décor growth</div>
+                        <div class="v" style="font-size:26px;">~10% / yr</div>
+                    </div>
+                    <p style="color:var(--muted);font-size:14px;margin:0;">Consumer demand for circular and
+                        eco-conscious interior products is accelerating across Europe and North America.</p>
+                </div>
+
+                <div class="card mini col4">
+                    <div class="m" style="background:var(--bg-soft);border:none;padding:0;margin-bottom:12px;">
+                        <div class="k">Hair waste in Europe (annually)</div>
+                        <div class="v" style="font-size:26px;">300,000 t</div>
+                    </div>
+                    <p style="color:var(--muted);font-size:14px;margin:0;">A massive, untapped, free raw material supply
+                        — currently going straight to landfill from salons across the continent.</p>
+                </div>
+            </div>
+
+            <div class="cards" style="margin-top:16px;">
+                <div class="card mini col12">
+                    <div class="tag">Roadmap</div>
+                    <h3>Three phases</h3>
+                    <div class="cards" style="margin-top:14px;">
+                        <div class="card mini col4" style="background:rgba(255,255,255,.6);">
+                            <div class="tag">Phase 1</div>
+                            <h3>Build buzz</h3>
+                            <p>Pre-orders and limited editions to validate demand, generate press coverage, and
+                                establish our brand in the design and eco-luxury space.</p>
+                        </div>
+                        <div class="card mini col4" style="background:rgba(255,255,255,.6);">
+                            <div class="tag">Phase 2</div>
+                            <h3>Scale collection</h3>
+                            <p>Partnerships with salon chains for a scalable collection network — turning hundreds of
+                                salons into consistent supply nodes across major cities.</p>
+                        </div>
+                        <div class="card mini col4" style="background:rgba(255,255,255,.6);">
+                            <div class="tag">Phase 3</div>
+                            <h3>Expand the material</h3>
+                            <p>Expand into other keratin-based products: wall panels, acoustic insulation, and fashion
+                                textiles — growing the circular use of recovered hair beyond the floor.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards" style="margin-top:16px;">
+                <div class="card mini col12" style="padding:28px 34px;">
+                    <p style="font-size:18px;line-height:1.6;margin:0;color:var(--muted);font-style:italic;">
+                        "Most startups try to create demand. We just looked at what was already on the floor.
+                        KeratinCycle — because the best material was always right under our feet."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="story">
+            <div class="sectionTitle">
+                <h2>Material Storytelling</h2>
+                <p class="lead">A strong image helps people remember what makes the project unusual.</p>
+            </div>
+
+            <div class="cards">
+                <div class="card imageCard col6">
+                    <img class="img-rug-card" src="images/donation.png"
+                        alt="A man with a lot of hairs used as a provocative storytelling visual">
+                    <div class="mini">
+                        <div class="tag">Provocative visual</div>
+                        <h3>Challenge perception</h3>
+                        <p>Use a bold image to trigger curiosity, then explain the logic, treatment, and design value
+                            behind the project.</p>
+                    </div>
+                </div>
+
+                <div class="card imageCard col6">
+                    <img class="img-rug-card" src="images/lab.png"
+                        alt="Research and material exploration around recovered human hairs">
+                    <div class="mini">
+                        <div class="tag">Research angle</div>
+                        <h3>Show the process behind the concept</h3>
+                        <p>Images of testing, samples, and material exploration make the project feel intentional and
+                            credible.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="care">
+            <div class="sectionTitle">
+                <h2>Care Guide</h2>
+                <p class="lead">Simple maintenance for a material with an unusual story.</p>
+            </div>
+
+            <div class="cards">
+                <div class="card imageCard col6">
+                    <img class="img-product" src="images/content.png"
+                        alt="Mild shampoo used to clean a rug made from recovered human hairs">
+                    <div class="mini">
+                        <div class="tag">Cleaning</div>
+                        <h3>Shampoo method</h3>
+                        <ul class="list">
+                            <li>Use lukewarm water with a small amount of mild shampoo.</li>
+                            <li>Apply lightly with a soft sponge.</li>
+                            <li>Wipe with a damp cloth and air-dry flat.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card imageCard col6">
+                    <img class="img-product" src="images/content1.png"
+                        alt="Soft brush used to maintain a rug made from recovered human hairs">
+                    <div class="mini">
+                        <div class="tag">Weekly care</div>
+                        <h3>Gentle brushing & vacuuming</h3>
+                        <ul class="list">
+                            <li>Vacuum gently on low or medium suction.</li>
+                            <li>Avoid aggressive rotating brushes.</li>
+                            <li>Handle the surface with soft, regular care.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq">
+            <div class="sectionTitle">
+                <h2>FAQ</h2>
+                <p class="lead">The project is surprising, so the questions are part of the experience.</p>
+            </div>
+
+            <details>
+                <summary>Why use human hairs as a material?</summary>
+                <p style="color:var(--muted);margin:10px 0 0;">
+                    Because they are already produced in large quantities and usually discarded immediately. The project
+                    rethinks that material flow.
+                </p>
+            </details>
+
+            <details>
+                <summary>Is this a design project or a research project?</summary>
+                <p style="color:var(--muted);margin:10px 0 0;">
+                    Both. It sits between circular material research, product experimentation, and storytelling through
+                    design.
+                </p>
+            </details>
+
+            <details>
+                <summary>How do you clean the rugs?</summary>
+                <p style="color:var(--muted);margin:10px 0 0;">
+                    With gentle vacuuming and a mild shampoo cleaning method using lukewarm water and soft handling.
+                    Because the fiber is hair, you clean it exactly the way you'd expect — with shampoo.
+                </p>
+            </details>
+
+            <details>
+                <summary>Where does the hair come from?</summary>
+                <p style="color:var(--muted);margin:10px 0 0;">
+                    From partner hair salons. We set up dedicated collection points — essentially a new type of
+                    recycling bin — and work with salons that already manage their waste carefully. The hair is
+                    anonymous and sorted by fiber characteristics, not by origin.
+                </p>
+            </details>
+
+            <details>
+                <summary>Is it hygienic?</summary>
+                <p style="color:var(--muted);margin:10px 0 0;">
+                    Yes. Every batch goes through a rigorous sanitization protocol before processing. The treatment
+                    removes impurities and ensures the fiber meets the same hygiene standards as any natural textile
+                    material. Think of it like the process applied to raw wool.
+                </p>
+            </details>
+
+            <details>
+                <summary>What makes KeratinCycle different from other sustainable rugs?</summary>
+                <p style="color:var(--muted);margin:10px 0 0;">
+                    Our positioning is unique: we sit at the intersection of circular economy, design, and provocation.
+                    There is no direct competitor doing this. We don't use recycled plastic bottles or organic cotton —
+                    we use a material that is already being produced and already being wasted, every single day, in
+                    every city in the world.
+                </p>
+            </details>
+
+            <details>
+                <summary>Who is this for?</summary>
+                <p style="color:var(--muted);margin:10px 0 0;">
+                    Design-conscious consumers who care about sustainability but also want their space to start a
+                    conversation. Eco-luxury interior brands. Gallery and exhibition curators exploring circular
+                    materials. Anyone who believes the most interesting objects come with a story.
+                </p>
+            </details>
+        </section>
+
+        <section id="contact">
+            <div class="sectionTitle">
+                <h2>Contact</h2>
+                <p class="lead">For pre-orders, exhibitions, collaborations, or media interest.</p>
+            </div>
+
+            <div class="card mini">
+                <form
+                    onsubmit="event.preventDefault(); alert('Demo form — connect this to Formspree, Netlify Forms, or your own backend.');">
+                    <div class="formGrid">
+                        <div>
+                            <label for="name" style="font-size:12px;color:var(--muted);">Name</label>
+                            <input id="name" name="name" placeholder="Your name" required />
+                        </div>
+                        <div>
+                            <label for="email" style="font-size:12px;color:var(--muted);">Email</label>
+                            <input id="email" name="email" type="email" placeholder="you@email.com" required />
+                        </div>
+                    </div>
+
+                    <div style="margin-top:12px;">
+                        <label for="msg" style="font-size:12px;color:var(--muted);">Message</label>
+                        <textarea id="msg" name="msg" placeholder="Tell us what you are interested in."></textarea>
+                    </div>
+
+                    <div class="ctaRow" style="margin-top:14px;">
+                        <button class="btn primary" type="submit">Send message</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="divider"></div>
+            <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+                <div>© <span id="y"></span> KeratinCycle — Circular design from recovered human hairs.</div>
+                <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                    <a href="#team">Research Team</a>
+                    <a href="#care">Care Guide</a>
+                    <a href="#top">Back to top</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
 </body>
+
 </html>
